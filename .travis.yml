@@ -1,11 +1,12 @@
-branches:
-  except:
-  - gh-pages
-
 language: python
+
+stages:
+  - name: update-index
+    if: branch = master AND type = api
+
 jobs:
   include:
     - name: Update index
-      stage: update
+      stage: update-index
       script:
         - python ./scripts/update-index.py
