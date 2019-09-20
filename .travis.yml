@@ -1,6 +1,6 @@
 branches:
-  only:
-  - update-index
+  except:
+  - gh-pages
 
 language: python
 jobs:
