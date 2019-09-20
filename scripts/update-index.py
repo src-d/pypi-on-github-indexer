@@ -60,11 +60,11 @@ doc = '''<!DOCTYPE html>
 
 # push to github
 with tempfile.TemporaryDirectory() as tmpdir:
-    subprocess.run(["git", "config", "user.name", "Infra sourced{d}"], check=True)
-    subprocess.run(["git", "config", "user.email", "infra@sourced.tech"], check=True)
     os.chdir(tmpdir)
     subprocess.run(["git", "clone", "--branch={}".format(target_branch), "--depth=1",
             gh_remote_url, "."], check=True)
+    subprocess.run(["git", "config", "user.name", "Infra sourced{d}"], check=True)
+    subprocess.run(["git", "config", "user.email", "infra@sourced.tech"], check=True)
 
     if not os.path.exists(index_file):
         os.mkdir(os.path.dirname(index_file))
