@@ -58,7 +58,7 @@ doc = '''<!DOCTYPE html>
 </html>
 '''.format(package=os.environ["PACKAGE_NAME"], links="\n".join(links))
 
-# push to github
+# push to github. We do it in a temp dir so that we can use test branches
 with tempfile.TemporaryDirectory() as tmpdir:
     os.chdir(tmpdir)
     subprocess.run(["git", "clone", "--branch={}".format(target_branch), "--depth=1",
