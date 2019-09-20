@@ -1,3 +1,7 @@
+branches:
+  only:
+  - update-index
+
 language: python
 jobs:
   include:
