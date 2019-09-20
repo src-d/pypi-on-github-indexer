@@ -6,10 +6,6 @@ import sys
 import os
 import re
 
-if os.environ.get("BUILD_ORIGIN") != "Custom Build":
-    print("Only custom builds will trigger this script")
-    sys.exit(0)
-
 # Check environment variables
 for var in ["PACKAGE_VERSION", "REPO_URL", "PACKAGE_NAME", "PYTHON_VERSION", "GITHUB_TOKEN"]:
     missing = False
@@ -64,14 +60,14 @@ doc = '''<!DOCTYPE html>
 
 # push to github
 with tempfile.TemporaryDirectory() as tmpdir:
-    print(tmpdir)
     subprocess.run(["git", "config", "user.name", "Infra sourced{d}"], check=True)
     subprocess.run(["git", "config", "user.email", "infra@sourced.tech"], check=True)
     os.chdir(tmpdir)
     subprocess.run(["git", "clone", "--branch={}".format(target_branch), "--depth=1",
             gh_remote_url, "."], check=True)
+
     if not os.path.exists(index_file):
-        os.mkdir(os.path.basename(index_file))
+        os.mkdir(os.path.dirname(index_file))
 
     with open(index_file, 'w') as f:
         f.write(doc)
