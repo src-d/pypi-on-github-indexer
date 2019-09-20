@@ -1,8 +1,4 @@
 language: python
-stages:
-  - name: update
-    if: branch = master AND type = push
-
 jobs:
   include:
     - name: Update index
