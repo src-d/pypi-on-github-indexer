@@ -44,7 +44,7 @@ def parse_args():
             error = True
     name, email = parseaddr(args.signature)
     if not name or not email:
-        print("Invalid Git signature: " + args.signature, file=sys.stderr)
+        print("Invalid Git signature: " + str(args.signature), file=sys.stderr)
         error = True
     return args, error
 
