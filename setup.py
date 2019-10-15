@@ -1,8 +1,14 @@
 from setuptools import find_packages, setup
+import os
+
+with open(os.path.join(os.path.dirname(__file__), "README.md"), encoding="utf-8") as f:
+    long_description = f.read()
 
 setup(
     name="pypi-on-github-indexer",
     description="Proprietary package publisher to the GitHub index repository.",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     version="0.1.0",
     license="Apache-2.0",
     author="source{d}",
