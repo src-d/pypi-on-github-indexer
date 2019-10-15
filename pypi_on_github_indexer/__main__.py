@@ -129,7 +129,7 @@ def main():
         shell("git", "config", "user.email", email)
 
         if not index_file.exists():
-            index_file.parent.mkdir()
+            index_file.parent.mkdir(parents=True)
         with open(index_file, "w") as f:
             f.write(doc)
 
